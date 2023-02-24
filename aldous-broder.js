@@ -1,18 +1,18 @@
 function aldousBroder(rows, cols) {
-    var maze = new Array(rows);
-    var unvisited = 0;
+    let maze = new Array(rows);
+    let unvisited = 0;
     
-    for (var i = 0; i < rows; i++) {
+    for (let i = 0; i < rows; i++) {
         maze[i] = new Array(cols);
-        for (var j = 0; j < cols; j++) {
-            var add = i % 2 == 1 && j % 2 == 1;
+        for (let j = 0; j < cols; j++) {
+            let add = i % 2 == 1 && j % 2 == 1;
             if (add)
                 unvisited++;
             maze[i][j] = 0;
         }
     }
-    var on = [];
-    
+
+    let on = [];
     do {
         on[0] = Math.floor(Math.random() * rows);
         on[1] = Math.floor(Math.random() * cols);
@@ -22,14 +22,14 @@ function aldousBroder(rows, cols) {
     unvisited--;
     
     while (unvisited > 0) {
-        var n = neighborsAB(maze, on[0], on[1]);
+        let n = neighborsAB(maze, on[0], on[1]);
         if (!n.length) { 
             console.log(maze);
             console.log(on);
             break;
         }
         
-        var to = n[Math.floor(Math.random() * n.length)];
+        let to = n[Math.floor(Math.random() * n.length)];
         
         if (maze[to[0]][to[1]] == 0) {
             maze[to[0]][to[1]] = 1;
